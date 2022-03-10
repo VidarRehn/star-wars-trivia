@@ -119,6 +119,7 @@ let secondCharacter
 
 goButton.addEventListener("click", (x) => {
     toggleView()
+    loadingAnimation.classList.toggle("hide")
     let imageOneURL = document.querySelector("#character-1-input option:checked").dataset.img
     let imageTwoURL = document.querySelector("#character-2-input option:checked").dataset.img
     getCharacters(characterOneInput.value, characterTwoInput.value)
@@ -126,6 +127,7 @@ goButton.addEventListener("click", (x) => {
         firstCharacter = new Character(arr[0][0], imageOneURL)
         secondCharacter = new Character(arr[1][0], imageTwoURL)
     }).then(()=>{
+        loadingAnimation.classList.toggle("hide")
         firstCharacter.buildCard(charactersContainer, secondCharacter)
         secondCharacter.buildCard(charactersContainer, firstCharacter)
     }).then(()=>{
@@ -193,3 +195,8 @@ backButton.addEventListener("click", (x) => {
     toggleView()
     charactersContainer.innerHTML = ""
 })
+
+
+// add loading animation
+
+const loadingAnimation = document.querySelector(".loading")

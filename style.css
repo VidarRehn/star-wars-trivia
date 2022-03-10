@@ -222,4 +222,63 @@ body .wrapper .main .back-btn {
 .hide {
   display: none !important;
 }
+
+.loading {
+  height: 60px;
+  width: 60px;
+  border: 10px solid black;
+  border-radius: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: relative;
+  -webkit-animation: rotate 1s infinite ease-in-out;
+          animation: rotate 1s infinite ease-in-out;
+}
+
+.loading .square {
+  height: 30px;
+  width: 30px;
+  background-color: white;
+  position: absolute;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
+
+.loading .square:nth-of-type(1) {
+  top: -20px;
+}
+
+.loading .square:nth-of-type(2) {
+  bottom: -20px;
+}
+
+@-webkit-keyframes rotate {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+@keyframes rotate {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
 /*# sourceMappingURL=style.css.map */
