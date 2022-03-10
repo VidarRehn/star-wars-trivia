@@ -15,14 +15,14 @@ class Character {
         this.imageUrl = imageUrl
     }
 
-    buildCard(appendWhere, otherCharacterName){
+    buildCard(appendWhere, otherCharacter){
         let characterCard = document.createElement("div")
         characterCard.classList.add("character-card")
         characterCard.innerHTML = `
         <div class="image">
             <img src="${this.imageUrl}" alt="picture of ${this.name}">
         </div>
-        <p>${this.name}, tell me about ${otherCharacterName}'s</p>
+        <p>${this.name}, tell me about ${otherCharacter.name}'s</p>
         <div class="compare-buttons">
             <button class="compare-btn weight">Weight</button>
             <button class="compare-btn length">Length</button>
@@ -34,11 +34,44 @@ class Character {
         appendWhere.append(characterCard)
     }
 
-    compareWeight(otherCharacterWeight){
-        let answerText = document.querySelector(".answer-text")
-        answerText.innerText = `${this.weight} and ${otherCharacterWeight}`
-        console.log(this.weight)
-        console.log(otherCharacterWeight)
+    compareWeight(otherCharacter, container){
+        let message
+        if ((parseFloat(this.weight)) > (parseFloat(otherCharacter.weight))){
+            // return `${otherCharacter.name} is tiny. At ${this.name} units I am a full ${this.weight - otherCharacter.weight} units heavier`
+            message = `${otherCharacter.name} doesn't weigh very much. At ${this.weight} units I am a full ${this.weight - otherCharacter.weight} units heavier`
+        } else if ((parseFloat(this.weight)) < (parseFloat(otherCharacter.weight))){
+            message = `${otherCharacter.name} is pretty heavy. To be exact, they weigh ${otherCharacter.weight - this.weight} units more than me`
+        } else {
+            message = `At ${this.weight} units, me and ${otherCharacter.name} weigh exactly the same`
+        }
+        container.innerText = message
+    }
+
+    compareHeight(otherCharacter, container){
+        let message
+        if ((parseFloat(this.height)) > (parseFloat(otherCharacter.height))){
+            message = `I believe ${otherCharacter.name} is about ${otherCharacter.height} units tall, which is small compared to me.`
+        } else if ((parseFloat(this.height)) < (parseFloat(otherCharacter.height))){
+            message = `With ${otherCharacter.name}'s ${otherCharacter.height} units, I am always in their shadow`
+        } else {
+            message = `Strangely enough, me and ${otherCharacter.name} are exactly the same height`
+        }
+        container.innerText = message
+    }
+
+    compareHairColor(otherCharacter, container){
+        let message = `I much prefer my ${this.hairColor} hair over ${otherCharacter.name}'s nasty ${otherCharacter.hairColor} hair`
+        container.innerText = message
+    }
+
+    compareGender(otherCharacter, container){
+        let message
+        if (this.gender == otherCharacter.gender){
+            message = `We are both ${this.gender}s`
+        } else {
+            messsage = `${otherCharacter.name} is a ${otherCharacter.gender} and I am obviously a ${this.gender}`
+        }
+        container.innerText = message
     }
 }
 
@@ -93,16 +126,51 @@ goButton.addEventListener("click", (x) => {
         firstCharacter = new Character(arr[0][0], imageOneURL)
         secondCharacter = new Character(arr[1][0], imageTwoURL)
     }).then(()=>{
-        firstCharacter.buildCard(charactersContainer, secondCharacter.name)
-        secondCharacter.buildCard(charactersContainer, firstCharacter.name)
+        firstCharacter.buildCard(charactersContainer, secondCharacter)
+        secondCharacter.buildCard(charactersContainer, firstCharacter)
     }).then(()=>{
         let compareWeightButtons = document.querySelectorAll(".weight")
+        let compareHeightButtons = document.querySelectorAll(".length")
+        let compareHairButtons = document.querySelectorAll(".hair")
+        let compareGenderButtons = document.querySelectorAll(".gender")
+        let answerTextContainers = document.querySelectorAll(".answer-text")
+
         compareWeightButtons.forEach(btn => {
             btn.addEventListener("click", ()=>{
                 if (btn == compareWeightButtons[0]){
-                    firstCharacter.compareWeight(secondCharacter.weight)
+                    firstCharacter.compareWeight(secondCharacter, answerTextContainers[0])
                 } else {
-                    secondCharacter.compareWeight(firstCharacter.weight)
+                    secondCharacter.compareWeight(firstCharacter, answerTextContainers[1])
+                }
+            })
+        })
+
+        compareHeightButtons.forEach(btn => {
+            btn.addEventListener("click", ()=>{
+                if (btn == compareHeightButtons[0]){
+                    firstCharacter.compareHeight(secondCharacter, answerTextContainers[0])
+                } else {
+                    secondCharacter.compareHeight(firstCharacter, answerTextContainers[1])
+                }
+            })
+        })
+
+        compareHairButtons.forEach(btn => {
+            btn.addEventListener("click", ()=>{
+                if (btn == compareHairButtons[0]){
+                    firstCharacter.compareHairColor(secondCharacter, answerTextContainers[0])
+                } else {
+                    secondCharacter.compareHairColor(firstCharacter, answerTextContainers[1])
+                }
+            })
+        })
+
+        compareGenderButtons.forEach(btn => {
+            btn.addEventListener("click", ()=>{
+                if (btn == compareGenderButtons[0]){
+                    firstCharacter.compareGender(secondCharacter, answerTextContainers[0])
+                } else {
+                    secondCharacter.compareGender(firstCharacter, answerTextContainers[1])
                 }
             })
         })

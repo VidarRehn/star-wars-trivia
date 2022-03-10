@@ -3,7 +3,7 @@
   padding: 0;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 body {
@@ -35,7 +35,9 @@ body .wrapper .header {
 }
 
 body .wrapper .header h1 {
-  font-size: 28px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 20px;
+  text-align: center;
 }
 
 body .wrapper .main {
@@ -93,8 +95,8 @@ body .wrapper .main .choose-character > div .input select {
 
 body .wrapper .main .choose-character > div .image {
   margin-top: 20px;
-  height: 300px;
-  width: 220px;
+  height: 260px;
+  width: 190px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -122,6 +124,7 @@ body .wrapper .main .compare-character {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  position: relative;
 }
 
 body .wrapper .main .compare-character .characters-container {
@@ -145,8 +148,8 @@ body .wrapper .main .compare-character .characters-container .character-card {
 
 body .wrapper .main .compare-character .characters-container .character-card .image {
   margin-top: 20px;
-  height: 300px;
-  width: 220px;
+  height: 260px;
+  width: 190px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -163,8 +166,9 @@ body .wrapper .main .compare-character .characters-container .character-card .im
   max-width: 100%;
 }
 
-body .wrapper .main .compare-character .characters-container .character-card p:not(.answer-text) {
-  width: 280px;
+body .wrapper .main .compare-character .characters-container .character-card p {
+  margin: 10px 0px;
+  width: 260px;
   text-align: center;
 }
 
@@ -184,16 +188,16 @@ body .wrapper .main .compare-character .characters-container .character-card .co
 }
 
 body .wrapper .main .compare-character .characters-container .character-card .compare-buttons .compare-btn {
-  border: 5px solid black;
+  border: 3px solid black;
   background-color: white;
   cursor: pointer;
-  height: 60px;
+  height: 30px;
   width: 80px;
   margin: 10px;
+  font-size: 12px;
 }
 
-body .wrapper .main #go-btn,
-body .wrapper .main .back-btn {
+body .wrapper .main #go-btn {
   margin-top: 30px;
   padding: 15px 60px;
   background-color: black;
@@ -201,6 +205,18 @@ body .wrapper .main .back-btn {
   font-size: 24px;
   border: none;
   cursor: pointer;
+}
+
+body .wrapper .main .back-btn {
+  padding: 5px 20px;
+  background-color: black;
+  color: white;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  top: -40px;
+  left: 20px;
 }
 
 .hide {
