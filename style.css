@@ -227,6 +227,7 @@ body .wrapper .main .back-btn {
   height: 60px;
   width: 60px;
   border: 10px solid black;
+  margin-top: 100px;
   border-radius: 50%;
   display: -webkit-box;
   display: -ms-flexbox;
